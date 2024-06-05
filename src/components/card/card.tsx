@@ -11,7 +11,7 @@ import { rareCard } from '../../const/const.tsx';
 function Card(place: Place): JSX.Element {
   const isAuthorized = useAppSelector((state) => state.user.authorizationStatus);
   const favoritesCounter = useAppSelector((state) => state.favorites.favoritesCounter);
-  const [activeOfferId, setActiveOfferId] = useState('');
+  const [, setActiveOfferId] = useState('');
   const [isFavourite, setIsFavourite] = useState(place.isFavorite);
   const dispatch = useAppDispatch();
   function handleMouseOver() {
@@ -77,7 +77,7 @@ function Card(place: Place): JSX.Element {
         {rareCard(place.rating)}
         <h2 className="place-card__name">
           <ScrollTop />
-          <NavLink to={`/offer/${activeOfferId}`}>{place.roomName}</NavLink>
+          <NavLink to={`/offer/${place.id}`} data-testid="place--title__test">{place.roomName}</NavLink>
         </h2>
         <p className="place-card__type">{place.roomType}</p>
       </div>
